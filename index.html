@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Bootstrap Landing</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        :root {
+            --primary-color: #4f46e5;
+            --secondary-color: #818cf8;
+            --dark-color: #1e1b4b;
+            --light-color: #f5f3ff;
+        }
+
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .hero-section {
+            min-height: 80vh;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .feature-card {
+            border: none;
+            border-radius: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .stats-card {
+            border: none;
+            border-radius: 1rem;
+            background: white;
+            transition: transform 0.3s ease;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-card {
+            border: none;
+            border-radius: 1rem;
+            background: var(--light-color);
+        }
+
+        .custom-shape {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .custom-shape svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 69px;
+        }
+
+        .custom-shape .shape-fill {
+            fill: #FFFFFF;
+        }
+
+       
+    /* Footer Styles */
+    footer {
+        background-color: #1f2937;
+        color: #f3f4f6;
+    }
+
+    footer h5, footer h6 {
+        color: #fff;
+        margin-bottom: 1.5rem;
+    }
+
+    footer p {
+        color: #9ca3af;
+        line-height: 1.75;
+    }
+
+    footer .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        transition: all 0.3s ease;
+    }
+
+    footer .social-links a:hover {
+        background-color: var(--primary-color);
+        transform: translateY(-3px);
+    }
+
+    footer .list-unstyled li a {
+        color: #9ca3af;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+        padding: 0.25rem 0;
+    }
+
+    footer .list-unstyled li a:hover {
+        color: #fff;
+        transform: translateX(5px);
+    }
+
+    footer .contact-info li {
+        color: #9ca3af;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    footer .contact-info li i {
+        width: 20px;
+        color: var(--primary-color);
+    }
+
+    footer hr {
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    footer .bottom-links a {
+        color: #9ca3af;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    footer .bottom-links a:hover {
+        color: #fff;
+    }
+
+    footer .copyright {
+        color: #9ca3af;
+    }
+
+    @media (max-width: 768px) {
+        footer .col-md-4,
+        footer .col-md-2 {
+            margin-bottom: 2rem;
+        }
+    }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="#">
+                <i class="fas fa-cube me-2"></i>ModernGrid
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-white position-relative">
+        <div class="container">
+            <div class="row min-vh-80 align-items-center">
+                <div class="col-lg-6 py-5">
+                    <h1 class="display-4 fw-bold mb-4">Master Bootstrap's Grid System</h1>
+                    <p class="lead mb-4">Create responsive layouts effortlessly with Bootstrap's powerful grid system. Perfect for modern web applications.</p>
+                    <div class="d-flex gap-3">
+                        <button class="btn btn-light btn-lg px-4">Get Started</button>
+                        <button class="btn btn-outline-light btn-lg px-4">Learn More</button>
+                    </div>
+                </div>
+                <div class="col-lg-6 py-5 text-center">
+                    <img src="https://ncarb.github.io/bootstrap/assets/img/bootstrap-stack.png" alt="Hero illustration" class="img-fluid rounded-3 shadow-lg">
+                </div>
+            </div>
+        </div>
+        <!-- <div class="custom-shape">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div> -->
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="row text-center mb-5">
+                <div class="col-lg-6 mx-auto">
+                    <h2 class="fw-bold mb-3">Key Features</h2>
+                    <p class="text-muted">Discover the power of Bootstrap's grid system with these amazing features</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card feature-card h-100 p-4">
+                        <div class="icon-circle bg-primary bg-opacity-10 text-primary">
+                            <i class="fas fa-mobile-alt fa-lg"></i>
+                        </div>
+                        <h4 class="mb-3">Responsive Design</h4>
+                        <p class="text-muted mb-0">Automatically adapts to any screen size, from mobile to desktop.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card feature-card h-100 p-4">
+                        <div class="icon-circle bg-success bg-opacity-10 text-success">
+                            <i class="fas fa-code fa-lg"></i>
+                        </div>
+                        <h4 class="mb-3">Easy to Use</h4>
+                        <p class="text-muted mb-0">Simple and intuitive grid system with rows and columns.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card feature-card h-100 p-4">
+                        <div class="icon-circle bg-warning bg-opacity-10 text-warning">
+                            <i class="fas fa-puzzle-piece fa-lg"></i>
+                        </div>
+                        <h4 class="mb-3">Flexible Grid</h4>
+                        <p class="text-muted mb-0">Create complex layouts with nested grids and auto-layout.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-md-3 col-6">
+                    <div class="stats-card text-center p-4">
+                        <h3 class="fw-bold text-primary mb-2">12</h3>
+                        <p class="text-muted mb-0">Columns</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stats-card text-center p-4">
+                        <h3 class="fw-bold text-primary mb-2">6</h3>
+                        <p class="text-muted mb-0">Breakpoints</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stats-card text-center p-4">
+                        <h3 class="fw-bold text-primary mb-2">∞</h3>
+                        <p class="text-muted mb-0">Possibilities</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stats-card text-center p-4">
+                        <h3 class="fw-bold text-primary mb-2">24/7</h3>
+                        <p class="text-muted mb-0">Support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-6 mx-auto text-center mb-5">
+                    <h2 class="fw-bold mb-3">What People Say</h2>
+                    <p class="text-muted">Hear from developers who love Bootstrap's grid system</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="testimonial-card p-4">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="data:image/jpeg;base64,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" alt="User" width="50px" class="rounded-circle me-3">
+                            <div>
+                                <h5 class="mb-1">Sarah Johnson</h5>
+                                <p class="text-muted mb-0">Frontend Developer</p>
+                            </div>
+                        </div>
+                        <p class="mb-0">"Bootstrap's grid system has revolutionized how I build responsive layouts. It's intuitive and powerful!"</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    
+                    
+                        <div class="testimonial-card p-4">
+                            <div class="d-flex align-items-center mb-4">
+                                <img src="data:image/jpeg;base64,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" alt="User" width="50px" height="50px" class="rounded-circle me-3">
+                                <div>
+                                    <h5 class="mb-1">Alex Chen</h5>
+                                    <p class="text-muted mb-0">UX Designer</p>
+                                </div>
+                            </div>
+                            <p class="mb-0">"The flexibility of Bootstrap's grid makes it perfect for creating complex, responsive layouts with minimal effort."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Call to Action Section -->
+        <section class="bg-gradient-primary text-white py-5 position-relative">
+            <div class="container py-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="display-5 fw-bold mb-4">Ready to Get Started?</h2>
+                        <p class="lead mb-4">Join thousands of developers who are already using Bootstrap's grid system</p>
+                        <div class="d-flex justify-content-center gap-3">
+                            <button class="btn btn-light btn-lg px-4">Start Building</button>
+                            <button class="btn btn-outline-light btn-lg px-4">Documentation</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Newsletter Section -->
+        <section class="py-5 bg-light">
+            <div class="container py-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 text-center">
+                        <h3 class="fw-bold mb-4">Stay Updated</h3>
+                        <p class="text-muted mb-4">Get the latest Bootstrap tips and tricks delivered to your inbox</p>
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control form-control-lg" placeholder="Enter your email">
+                            <button class="btn btn-primary px-4">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Footer -->
+        <footer class="bg-dark text-white py-5">
+            <div class="container py-4">
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <h5 class="fw-bold mb-4">
+                            <i class="fas fa-cube me-2"></i>ModernGrid
+                        </h5>
+                        <p class="text-muted">Build beautiful, responsive layouts with Bootstrap's powerful grid system. Perfect for modern web applications.</p>
+                        <div class="d-flex gap-3 mt-4">
+                            <a href="#" class="text-white">
+                                <i class="fab fa-twitter fa-lg"></i>
+                            </a>
+                            <a href="#" class="text-white">
+                                <i class="fab fa-github fa-lg"></i>
+                            </a>
+                            <a href="#" class="text-white">
+                                <i class="fab fa-linkedin fa-lg"></i>
+                            </a>
+                            <a href="#" class="text-white">
+                                <i class="fab fa-instagram fa-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4">
+                        <h6 class="fw-bold mb-4">Quick Links</h6>
+                        <ul class="text-white">
+                            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Home</a></li>
+                            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Features</a></li>
+                            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Pricing</a></li>
+                            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-4">
+                        <h6 class="fw-bold mb-4">Resources</h6>
+                        <ul class="list-styled">
+                            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Documentation</a></li>
+                            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Tutorials</a></li>
+                            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Blog</a></li>
+                            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Support</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <h6 class="fw-bold mb-4">Contact Us</h6>
+                        <ul class="list-unstyled text-white">
+                            <li class="mb-2">
+                                <i class="fas fa-map-marker-alt me-2"></i> 123 Grid Street, Bootstrap City
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-envelope me-2"></i> ridoyelami@gmail.com
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-phone me-2"></i> (123) 456-7890
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="my-5">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="mb-0 text-white">&copy; 2024 ModernGrid. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <div class="d-flex justify-content-center justify-content-md-end gap-3">
+                            <a href="#" class="text-white text-decoration-none">Privacy Policy</a>
+                            <a href="#" class="text-white text-decoration-none">Terms of Service</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    
+        <!-- Bootstrap JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    </body>
+    </html>
